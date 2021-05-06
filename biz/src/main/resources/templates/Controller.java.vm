@@ -1,0 +1,85 @@
+package ${package.Controller};
+
+import ${package.Entity}.${entity};
+import ${package.Service}.${table.serviceName};
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.stef.user.common.RespBean;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+/**
+ * $!{table.comment}
+ *
+ * @author ${author}
+ * @date ${date}
+ */
+@RestController
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+@Api(value = "#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end", tags = "$!{table.comment}管理")
+public class ${table.controllerName} {
+
+    @Autowired
+    private  ${entity}Service ${table.entityPath}Service;
+
+    /**
+     * 分页查询
+     * @param page 分页对象
+     * @param ${table.entityPath} $!{table.comment}
+     * @return RespBean
+     */
+    @ApiOperation(value = "分页查询", notes = "分页查询")
+    @GetMapping("/page" )
+    public RespBean get${table.controllerName}Page(Page page, ${entity} ${table.entityPath}) {
+        return RespBean.ok(${table.entityPath}Service.page(page, Wrappers.query(${table.entityPath})));
+    }
+
+
+    /**
+     * 通过id查询$!{table.comment}
+     * @param id id
+     * @return RespBean
+     */
+    @ApiOperation(value = "通过id查询", notes = "通过id查询")
+    @GetMapping("/{id}" )
+    public RespBean getById(@PathVariable("id" ) Long id) {
+        return RespBean.ok(${table.entityPath}Service.getById(id));
+    }
+
+    /**
+     * 新增$!{table.comment}
+     * @param ${table.entityPath} $!{table.comment}
+     * @return RespBean
+     */
+    @ApiOperation(value = "新增$!{table.comment}", notes = "新增$!{table.comment}")
+    @PostMapping
+    public RespBean save(@RequestBody ${entity}  ${table.entityPath}) {
+        return RespBean.ok(${table.entityPath}Service.save(${table.entityPath}));
+    }
+
+    /**
+     * 修改$!{table.comment}
+     * @param ${table.entityPath} $!{table.comment}
+     * @return RespBean
+     */
+    @ApiOperation(value = "修改$!{table.comment}", notes = "修改$!{table.comment}")
+    @PutMapping
+    public RespBean updateById(@RequestBody ${entity}  ${table.entityPath}) {
+        return RespBean.ok(${table.entityPath}Service.updateById(${table.entityPath}));
+    }
+
+    /**
+     * 通过id删除$!{table.comment}
+     * @param id id
+     * @return RespBean
+     */
+    @ApiOperation(value = "通过id删除$!{table.comment}", notes = "通过id删除$!{table.comment}")
+    @DeleteMapping("/{id}" )
+    public RespBean removeById(@PathVariable Long id) {
+        return RespBean.ok(${table.entityPath}Service.removeById(id));
+    }
+
+}
