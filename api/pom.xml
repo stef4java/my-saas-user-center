@@ -12,7 +12,6 @@
     <artifactId>user-center-api</artifactId>
     <packaging>jar</packaging>
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -23,15 +22,27 @@
             <artifactId>spring-web</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
         <dependency>
+            <groupId>com.stef</groupId>
+            <artifactId>my-saas-commons</artifactId>
+        </dependency>
+
+        <!--Lombok-->
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
 
         <!-- hutool工具类-->

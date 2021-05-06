@@ -3,10 +3,12 @@ package com.stef.user;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author stef
  */
+@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
 public class UserApplication {
